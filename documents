@@ -1,6 +1,6 @@
-/*Add Flex Relate Sub-panel */
+Add Flex Relate Sub-panel 
 
-/*1. Add custom/include/language/en_us.lang.php*/
+1. Add custom/include/language/en_us.lang.php
 <?php
 
 GLOBALS['app_list_strings']['record_type_display_sanxuat'] = array(
