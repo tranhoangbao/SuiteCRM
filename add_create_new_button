@@ -1,0 +1,9 @@
+1. Add Create New button on top right
+#vim include/MVC/View/SugarView.php
+Add (row 1517)
+
+$theTitle .= "<td><div style='float: right;' align='right'><button style='border-radius: 4px;background-color: grey;padding:5px 10px 5px 10px;'><a style='color:white;' href='index.php?module=$module&action=EditView&return_module=$module&return_action=DetailView'><span class='suitepicon suitepicon-action-add'></span>&nbsp;&nbsp;{$GLOBALS['app_strings']['LBL_CREATE_NEW_RECORD']}</a></button></div></td>";
+
+2. Change Title to scrumbread 
+Add
+$theTitle .= "<td><h2 class='module-title-text'><a href='index.php?module=$module'> {$GLOBALS['app_list_strings']['moduleList'][$module]}</a><span class='pointer'>»</span> $paramString </h2></td>";
