@@ -101,10 +101,34 @@ $layout_defs["gt_gameshow"]["subpanel_setup"]['gt_hauky_gt_gameshow'] = array (
   array (
     0 =>
     array (
-      'widget_class' => 'SubPanelTopButtonQuickCreate',
+      'widget_class' => 'SubPanelTopCreateGhichuButton',
     ),
   ),
 );
 
+4. Add custom widgets
+#vim custom/include/generic/SugarWidgets/SugarWidgetSubpanelTopCreateGhichuButton.php
+Add:
+class SugarWidgetSubPanelTopCreateGhichuButton extends SugarWidgetSubPanelTopButton
+{
+    public function &_get_form($defines, $additionalFormFields = null, $asUrl = false)
+    {
+        global $app_strings;
+        global $currentModule;
 
+        $this->module="gt_ghichu_phimtruong";
+        //$this->subpanelDiv = "activities";
+        if($currentModule == 'gt_chuongtrinh'){
+        $this->subpanelDiv = "gt_ghichu_phimtruong_gt_chuongtrinh";
+        } elseif ($currentModule == 'gt_gameshow'){
+        $this->subpanelDiv = "gt_ghichu_phimtruong_gt_gameshow";
+        }
 
+#vim custom/include/generic/SugarWidgetds/SugarWidgetSubPanelTopButton.php
+
+Add:
+       elseif (empty($this->form_value)){
+            $value = $app_strings['LBL_NEW_BUTTON_LABEL'];
+            $button = $this->_get_form($defines, $additionalFormFields);
+            $button .= "<input title='$this->title' accesskey='$this->access_key' class='button' type='submit' name='$inputID' id='$inputID' value='$value' />\n</form>";
+        }
